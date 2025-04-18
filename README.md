@@ -50,7 +50,7 @@
   </style>
 </head>
 <body>
-  <h2 id="headline">Нажмите кнопку ниже, чтобы открыть </h2>
+  <h2 id="headline">Нажмите кнопку ниже, чтобы открыть</h2>
   <button id="redirectBtn">Открыть</button>
 
   <script>
@@ -60,13 +60,12 @@
         button: "Открыть"
       },
       en: {
-        headline: "Tap the button below to open ",
+        headline: "Tap the button below to open",
         button: "Open"
       }
     };
 
     const userLang = navigator.language.startsWith("ru") ? "ru" : "en";
-
     document.getElementById("headline").innerText = translations[userLang].headline;
     document.getElementById("redirectBtn").innerText = translations[userLang].button;
 
@@ -88,13 +87,16 @@
 
       if (isMobile()) {
         const randomIndex = Math.floor(Math.random() * offers.length);
-        targetUrl = offers[randomIndex];
+        // Добавляем временную метку для избежания кэша
+        targetUrl = offers[randomIndex] + `&ts=${Date.now()}`;
       } else {
         targetUrl = desktopRedirect;
       }
 
+      // Попытка открыть во внешнем браузере
       window.open(targetUrl, "_blank");
 
+      // Резервный редирект
       setTimeout(() => {
         window.location.href = targetUrl;
       }, 1500);
