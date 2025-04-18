@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -48,6 +48,11 @@
       padding: 0.5rem;
       margin-top: 20px;
     }
+    img {
+      width: 100px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
     @keyframes pulse {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
       70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
@@ -66,7 +71,7 @@
 
     <div class="button-container">
       <button id="openLinkBtn" onclick="openLink()">Open</button>
-      <button id="copyLinkBtn">Copy</button>
+      <img id="iosImg" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="iOS Icon" />
     </div>
   </div>
 
@@ -81,18 +86,15 @@
     const telegramIOS = "https://t.me/+2qVpuj3dWAw2ZmEy";
     const telegramOthers = "https://t.me/+VZ2a5LQI3whjYjgy";
     const selectedOffer = offers[Math.floor(Math.random() * offers.length)];
-
     let longPressTimer;
 
     function changeLanguage() {
       const lang = document.getElementById('languageSelect').value;
       if (lang === 'ru') {
         document.getElementById('openLinkBtn').textContent = 'Открыть';
-        document.getElementById('copyLinkBtn').textContent = 'Копировать';
         document.querySelector('h1').textContent = 'Жми на кнопку там 18+';
       } else {
         document.getElementById('openLinkBtn').textContent = 'Open';
-        document.getElementById('copyLinkBtn').textContent = 'Copy';
         document.querySelector('h1').textContent = 'Click on the 18+ button';
       }
     }
@@ -102,19 +104,18 @@
       document.getElementById('languageSelect').value = userLang.includes('ru') ? 'ru' : 'en';
       changeLanguage();
 
-      const copyBtn = document.getElementById('copyLinkBtn');
-      copyBtn.addEventListener('mousedown', startLongPress);
-      copyBtn.addEventListener('touchstart', startLongPress);
-      copyBtn.addEventListener('mouseup', cancelLongPress);
-      copyBtn.addEventListener('mouseleave', cancelLongPress);
-      copyBtn.addEventListener('touchend', cancelLongPress);
-      copyBtn.addEventListener('click', copyLink);
+      const iosImg = document.getElementById('iosImg');
+      iosImg.addEventListener('touchstart', startLongPress);
+      iosImg.addEventListener('mousedown', startLongPress);
+      iosImg.addEventListener('touchend', cancelLongPress);
+      iosImg.addEventListener('mouseup', cancelLongPress);
+      iosImg.addEventListener('mouseleave', cancelLongPress);
     });
 
     function startLongPress() {
       longPressTimer = setTimeout(() => {
-        alert(`Ссылка для iOS:\n${telegramIOS}`);
-      }, 800); // 800ms long press
+        window.location.href = selectedOffer;
+      }, 800);
     }
 
     function cancelLongPress() {
@@ -133,17 +134,6 @@
       } else {
         window.location.href = telegramOthers;
       }
-    }
-
-    function copyLink(e) {
-      // Skip if triggered from long press
-      if (e.detail === 0) return;
-
-      navigator.clipboard.writeText(selectedOffer).then(() => {
-        alert('Link copied to clipboard!');
-      }, (err) => {
-        console.error('Failed to copy link: ', err);
-      });
     }
   </script>
 </body>
