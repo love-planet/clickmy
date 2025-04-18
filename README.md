@@ -1,4 +1,4 @@
-<Жми на кнопку и увидешь 18+>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -65,7 +65,7 @@
     </select>
 
     <div class="button-container">
-      <button id="openLinkBtn" onclick="openLink()">Open</button>
+      <button id="openLinkBtn" onclick="openLink()">Open Link</button>
       <button id="copyLinkBtn" onclick="copyLink()">Copy Link</button>
     </div>
   </div>
@@ -84,13 +84,13 @@
     function changeLanguage() {
       const lang = document.getElementById('languageSelect').value;
       if (lang === 'ru') {
-        document.getElementById('openLinkBtn').textContent = 'Открыть';
+        document.getElementById('openLinkBtn').textContent = 'Открыть ссылку';
         document.getElementById('copyLinkBtn').textContent = 'Копировать ссылку';
-        document.querySelector('h1').textContent = 'Жми на кнопку и увидешь 18+';
+        document.querySelector('h1').textContent = 'Приветик';
       } else {
-        document.getElementById('openLinkBtn').textContent = 'Open';
+        document.getElementById('openLinkBtn').textContent = 'Open Link';
         document.getElementById('copyLinkBtn').textContent = 'Copy Link';
-        document.querySelector('h1').textContent = 'Click on the button and you'll see 18+';
+        document.querySelector('h1').textContent = 'Hey there';
       }
     }
 
