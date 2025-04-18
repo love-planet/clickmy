@@ -85,13 +85,13 @@
     function changeLanguage() {
       const lang = document.getElementById('languageSelect').value;
       if (lang === 'ru') {
-        document.getElementById('openLinkBtn').textContent = 'Открыть ссылку';
-        document.getElementById('copyLinkBtn').textContent = 'Копировать ссылку';
-        document.querySelector('h1').textContent = 'Приветик';
+        document.getElementById('openLinkBtn').textContent = 'Открыть ';
+        document.getElementById('copyLinkBtn').textContent = 'Копировать ';
+        document.querySelector('h1').textContent = 'Жми на кнопку и увидешь 18+';
       } else {
-        document.getElementById('openLinkBtn').textContent = 'Open Link';
-        document.getElementById('copyLinkBtn').textContent = 'Copy Link';
-        document.querySelector('h1').textContent = 'Hey there';
+        document.getElementById('openLinkBtn').textContent = 'Open ';
+        document.getElementById('copyLinkBtn').textContent = 'Copy ';
+        document.querySelector('h1').textContent = 'Click on the button and you'll see 18+';
       }
     }
 
