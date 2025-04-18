@@ -50,17 +50,17 @@
   </style>
 </head>
 <body>
-  <h2 id="headline">Нажмите кнопку ниже, чтобы открыть оффер</h2>
+  <h2 id="headline">Нажмите кнопку ниже, чтобы открыть </h2>
   <button id="redirectBtn">Открыть</button>
 
   <script>
     const translations = {
       ru: {
-        headline: "Нажмите кнопку ниже, чтобы открыть оффер",
+        headline: "Нажмите кнопку ниже, чтобы открыть",
         button: "Открыть"
       },
       en: {
-        headline: "Tap the button below to open the offer",
+        headline: "Tap the button below to open ",
         button: "Open"
       }
     };
