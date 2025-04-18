@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -57,7 +57,7 @@
 </head>
 <body>
   <div id="container">
-    <h1>Приветик</h1>
+    <h1>Смелее </h1>
 
     <select id="languageSelect" onchange="changeLanguage()">
       <option value="en">English</option>
@@ -86,11 +86,11 @@
       if (lang === 'ru') {
         document.getElementById('openLinkBtn').textContent = 'Открыть ссылку';
         document.getElementById('copyLinkBtn').textContent = 'Копировать ссылку';
-        document.querySelector('h1').textContent = 'Приветик';
+        document.querySelector('h1').textContent = 'Жми на кнопку там 18+';
       } else {
         document.getElementById('openLinkBtn').textContent = 'Open Link';
         document.getElementById('copyLinkBtn').textContent = 'Copy Link';
-        document.querySelector('h1').textContent = 'Hey there';
+        document.querySelector('h1').textContent = 'Click on the 18+ button';
       }
     }
 
