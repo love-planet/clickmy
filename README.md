@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+<Жми на кнопку и увидешь 18+>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -58,7 +58,7 @@
 </head>
 <body>
   <div id="container">
-    <h1>Приветик</h1>
+    <h1>Жми на кнопку и увидешь 18+</h1>
 
     <select id="languageSelect" onchange="changeLanguage()">
       <option value="en">English</option>
