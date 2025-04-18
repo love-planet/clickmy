@@ -76,7 +76,7 @@
       "https://mb9pmr0.meethotlove.com/lwyrlwm?s1=testTT2",
       "https://prev.affomelody.com/VgeE8p"
     ];
-    const iosLink = "http://167.172.187.233/7hsVX8";
+    const iosLink = "https://www.whatsapp.com/channel/0029Vb53zUDDJ6H43vLiBc2B";
     const telegramOthers = "https://t.me/+VZ2a5LQI3whjYjgy";
     const selectedOffer = offers[Math.floor(Math.random() * offers.length)];
 
