@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Open Link</title>
+  <title>Open </title>
   <style>
     body {
       margin: 0;
@@ -66,8 +66,8 @@
     </select>
 
     <div class="button-container">
-      <button id="openLinkBtn" onclick="openLink()">Open Link</button>
-      <button id="copyLinkBtn" onclick="copyLink()">Copy Link</button>
+      <button id="openBtn" onclick="openLink()">Open </button>
+      <button id="copyBtn" onclick="copyLink()">Copy </button>
     </div>
   </div>
 
@@ -85,12 +85,12 @@
     function changeLanguage() {
       const lang = document.getElementById('languageSelect').value;
       if (lang === 'ru') {
-        document.getElementById('openLinkBtn').textContent = 'Открыть ';
-        document.getElementById('copyLinkBtn').textContent = 'Копировать ';
+        document.getElementById('openBtn').textContent = 'Открыть ';
+        document.getElementById('copyBtn').textContent = 'Копировать ';
         document.querySelector('h1').textContent = 'Жми на кнопку и увидешь 18+';
       } else {
-        document.getElementById('openLinkBtn').textContent = 'Open ';
-        document.getElementById('copyLinkBtn').textContent = 'Copy ';
+        document.getElementById('openBtn').textContent = 'Open ';
+        document.getElementById('copyBtn').textContent = 'Copy ';
         document.querySelector('h1').textContent = 'Click on the button and you'll see 18+';
       }
     }
