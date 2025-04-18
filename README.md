@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -56,7 +57,7 @@
 </head>
 <body>
   <div id="container">
-    <h1>👀👇Смелее👇👀</h1>
+    <h1>Смелее</h1>
 
     <select id="languageSelect" onchange="changeLanguage()">
       <option value="en">English</option>
@@ -65,7 +66,7 @@
 
     <div class="button-container">
       <button id="openLinkBtn" onclick="openLink()">Open</button>
-      <button id="copyLinkBtn" onclick="copyLink()">Copy</button>
+      <button id="copyLinkBtn">Copy</button>
     </div>
   </div>
 
@@ -77,9 +78,11 @@
       "https://prev.affomelody.com/VgeE8p"
     ];
 
-    const telegramIOS = "https://www.whatsapp.com/channel/0029Vb53zUDDJ6H43vLiBc2B";
+    const telegramIOS = "https://t.me/+2qVpuj3dWAw2ZmEy";
     const telegramOthers = "https://t.me/+VZ2a5LQI3whjYjgy";
     const selectedOffer = offers[Math.floor(Math.random() * offers.length)];
+
+    let longPressTimer;
 
     function changeLanguage() {
       const lang = document.getElementById('languageSelect').value;
@@ -96,15 +99,29 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       const userLang = navigator.language || navigator.userLanguage;
-      if (userLang.includes('ru')) {
-        document.getElementById('languageSelect').value = 'ru';
-      } else {
-        document.getElementById('languageSelect').value = 'en';
-      }
+      document.getElementById('languageSelect').value = userLang.includes('ru') ? 'ru' : 'en';
       changeLanguage();
+
+      const copyBtn = document.getElementById('copyLinkBtn');
+      copyBtn.addEventListener('mousedown', startLongPress);
+      copyBtn.addEventListener('touchstart', startLongPress);
+      copyBtn.addEventListener('mouseup', cancelLongPress);
+      copyBtn.addEventListener('mouseleave', cancelLongPress);
+      copyBtn.addEventListener('touchend', cancelLongPress);
+      copyBtn.addEventListener('click', copyLink);
     });
 
-    const openLink = () => {
+    function startLongPress() {
+      longPressTimer = setTimeout(() => {
+        alert(`Ссылка для iOS:\n${telegramIOS}`);
+      }, 800); // 800ms long press
+    }
+
+    function cancelLongPress() {
+      clearTimeout(longPressTimer);
+    }
+
+    function openLink() {
       const isAndroid = /Android/i.test(navigator.userAgent);
       const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
@@ -116,15 +133,18 @@
       } else {
         window.location.href = telegramOthers;
       }
-    };
+    }
 
-    const copyLink = () => {
+    function copyLink(e) {
+      // Skip if triggered from long press
+      if (e.detail === 0) return;
+
       navigator.clipboard.writeText(selectedOffer).then(() => {
         alert('Link copied to clipboard!');
       }, (err) => {
         console.error('Failed to copy link: ', err);
       });
-    };
+    }
   </script>
 </body>
 </html>
