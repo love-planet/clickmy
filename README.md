@@ -1,106 +1,44 @@
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Redirecting...</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      margin-top: 20%;
-      padding: 0 20px;
-      background-color: #f9f9f9;
-    }
+<script>
+  function isMobile() {
+    return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+  }
 
-    h2 {
-      margin-bottom: 30px;
-    }
+  const offers = [
+    "https://grzvkg.trueamouronline.com/?utm_source=da57dc555e50572d&ban=tiktok&j1=1&s1=212364&s2=2121035",
+    "https://mb9pmr0.vipsthelovehaven.com/lw4h4aw?s1=testTT",
+    "https://mb9pmr0.meethotlove.com/lwyrlwm?s1=testTT2",
+    "https://prev.affomelody.com/VgeE8p"
+  ];
 
-    button {
-      padding: 15px 30px;
-      font-size: 18px;
-      background-color: #00aaff;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      animation: pulse 1.8s infinite;
-      box-shadow: 0 0 0 rgba(0, 170, 255, 0.4);
-      transition: transform 0.2s;
-    }
+  const desktopRedirect = "https://www.instagram.com/men.click_here0?igsh=d2tleGZ1MzE1eGV4";
 
-    button:hover {
-      transform: scale(1.05);
-    }
+  function getRandomOffer() {
+    const index = Math.floor(Math.random() * offers.length);
+    const randomSuffix = Math.random().toString(36).substring(2, 10);
+    const url = offers[index];
+    const separator = url.includes("?") ? "&" : "?";
+    return url + separator + "ref=" + randomSuffix;
+  }
 
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(0, 170, 255, 0.4);
-      }
-      70% {
-        transform: scale(1.08);
-        box-shadow: 0 0 0 10px rgba(0, 170, 255, 0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(0, 170, 255, 0);
-      }
-    }
-  </style>
-</head>
-<body>
-  <h2 id="headline">Нажмите кнопку ниже, чтобы открыть</h2>
-  <button id="redirectBtn">Открыть</button>
+  document.getElementById("redirectBtn").addEventListener("click", function () {
+    let offerUrl = isMobile() ? getRandomOffer() : desktopRedirect;
 
-  <script>
-    const translations = {
-      ru: {
-        headline: "Нажмите кнопку ниже, чтобы открыть",
-        button: "Открыть"
-      },
-      en: {
-        headline: "Tap the button below to open",
-        button: "Open"
-      }
-    };
+    if (/Android/i.test(navigator.userAgent)) {
+      // Android — открыть через Chrome
+      const chromeIntent = `intent://${offerUrl.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;end`;
+      window.location = chromeIntent;
+    } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      // iOS — попытка открыть через Safari
+      const safariHack = `x-web-search://?url=${encodeURIComponent(offerUrl)}`;
+      window.location = safariHack;
 
-    const userLang = navigator.language.startsWith("ru") ? "ru" : "en";
-    document.getElementById("headline").innerText = translations[userLang].headline;
-    document.getElementById("redirectBtn").innerText = translations[userLang].button;
-
-    function isMobile() {
-      return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
-    }
-
-    const offers = [
-      "https://grzvkg.trueamouronline.com/?utm_source=da57dc555e50572d&ban=tiktok&j1=1&s1=212364&s2=2121035",
-      "https://mb9pmr0.vipsthelovehaven.com/lw4h4aw?s1=testTT",
-      "https://mb9pmr0.meethotlove.com/lwyrlwm?s1=testTT2",
-      "https://prev.affomelody.com/VgeE8p"
-    ];
-
-    const desktopRedirect = "https://www.instagram.com/men.click_here0?igsh=d2tleGZ1MzE1eGV4";
-
-    document.getElementById("redirectBtn").addEventListener("click", function () {
-      let targetUrl;
-
-      if (isMobile()) {
-        const randomIndex = Math.floor(Math.random() * offers.length);
-        // Добавляем временную метку для избежания кэша
-        targetUrl = offers[randomIndex] + `&ts=${Date.now()}`;
-      } else {
-        targetUrl = desktopRedirect;
-      }
-
-      // Попытка открыть во внешнем браузере
-      window.open(targetUrl, "_blank");
-
-      // Резервный редирект
+      // fallback — откроет обычную ссылку, если safariHack не сработает
       setTimeout(() => {
-        window.location.href = targetUrl;
-      }, 1500);
-    });
-  </script>
-</body>
-</html>
+        window.location = offerUrl;
+      }, 500);
+    } else {
+      // Десктоп
+      window.location = desktopRedirect;
+    }
+  });
+</script>
