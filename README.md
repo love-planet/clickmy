@@ -1,10 +1,9 @@
-
 <Жми на кнопку и увидешь 18+>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Open </title>
+  <title>Open Link</title>
   <style>
     body {
       margin: 0;
@@ -58,7 +57,7 @@
 </head>
 <body>
   <div id="container">
-    <h1>Жми на кнопку и увидешь 18+</h1>
+    <h1>Приветик</h1>
 
     <select id="languageSelect" onchange="changeLanguage()">
       <option value="en">English</option>
@@ -66,8 +65,8 @@
     </select>
 
     <div class="button-container">
-      <button id="openBtn" onclick="openLink()">Open </button>
-      <button id="copyBtn" onclick="copyLink()">Copy </button>
+      <button id="openLinkBtn" onclick="openLink()">Open</button>
+      <button id="copyLinkBtn" onclick="copyLink()">Copy Link</button>
     </div>
   </div>
 
@@ -85,12 +84,12 @@
     function changeLanguage() {
       const lang = document.getElementById('languageSelect').value;
       if (lang === 'ru') {
-        document.getElementById('openBtn').textContent = 'Открыть ';
-        document.getElementById('copyBtn').textContent = 'Копировать ';
+        document.getElementById('openLinkBtn').textContent = 'Открыть';
+        document.getElementById('copyLinkBtn').textContent = 'Копировать ссылку';
         document.querySelector('h1').textContent = 'Жми на кнопку и увидешь 18+';
       } else {
-        document.getElementById('openBtn').textContent = 'Open ';
-        document.getElementById('copyBtn').textContent = 'Copy ';
+        document.getElementById('openLinkBtn').textContent = 'Open';
+        document.getElementById('copyLinkBtn').textContent = 'Copy Link';
         document.querySelector('h1').textContent = 'Click on the button and you'll see 18+';
       }
     }
