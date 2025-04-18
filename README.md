@@ -56,7 +56,7 @@
 </head>
 <body>
   <div id="container">
-    <h1>Смелее</h1>
+    <h1>Смелее </h1>
 
     <select id="languageSelect" onchange="changeLanguage()">
       <option value="en">English</option>
@@ -64,8 +64,8 @@
     </select>
 
     <div class="button-container">
-      <button id="openLinkBtn" onclick="openLink()">Open Link</button>
-      <button id="copyLinkBtn" onclick="copyLink()">Copy Link</button>
+      <button id="openLinkBtn" onclick="openLink()">Open</button>
+      <button id="copyLinkBtn" onclick="copyLink()">Copy</button>
     </div>
   </div>
 
@@ -77,19 +77,19 @@
       "https://prev.affomelody.com/VgeE8p"
     ];
 
-    const telegramFallback = "https://t.me/+VZ2a5LQI3whjYjgy";
-
+    const telegramIOS = "https://t.me/+2qVpuj3dWAw2ZmEy";
+    const telegramOthers = "https://t.me/+VZ2a5LQI3whjYjgy";
     const selectedOffer = offers[Math.floor(Math.random() * offers.length)];
 
     function changeLanguage() {
       const lang = document.getElementById('languageSelect').value;
       if (lang === 'ru') {
-        document.getElementById('openLinkBtn').textContent = 'Открыть ссылку';
-        document.getElementById('copyLinkBtn').textContent = 'Копировать ссылку';
+        document.getElementById('openLinkBtn').textContent = 'Открыть';
+        document.getElementById('copyLinkBtn').textContent = 'Копировать';
         document.querySelector('h1').textContent = 'Жми на кнопку там 18+';
       } else {
-        document.getElementById('openLinkBtn').textContent = 'Open Link';
-        document.getElementById('copyLinkBtn').textContent = 'Copy Link';
+        document.getElementById('openLinkBtn').textContent = 'Open';
+        document.getElementById('copyLinkBtn').textContent = 'Copy';
         document.querySelector('h1').textContent = 'Click on the 18+ button';
       }
     }
@@ -112,9 +112,9 @@
         const formattedUrl = selectedOffer.replace(/^https?:\/\//, '');
         window.location.href = `intent://${formattedUrl}#Intent;scheme=https;package=com.android.chrome;end`;
       } else if (isIOS) {
-        window.location.href = selectedOffer;
+        window.location.href = telegramIOS;
       } else {
-        window.location.href = telegramFallback;
+        window.location.href = telegramOthers;
       }
     };
 
