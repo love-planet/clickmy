@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -57,7 +56,7 @@
 </head>
 <body>
   <div id="container">
-    <h1>Смелее </h1>
+    <h1>Смелее</h1>
 
     <select id="languageSelect" onchange="changeLanguage()">
       <option value="en">English</option>
@@ -78,7 +77,8 @@
       "https://prev.affomelody.com/VgeE8p"
     ];
 
-    // Select a random offer on load
+    const telegramFallback = "https://t.me/+VZ2a5LQI3whjYjgy";
+
     const selectedOffer = offers[Math.floor(Math.random() * offers.length)];
 
     function changeLanguage() {
@@ -112,9 +112,9 @@
         const formattedUrl = selectedOffer.replace(/^https?:\/\//, '');
         window.location.href = `intent://${formattedUrl}#Intent;scheme=https;package=com.android.chrome;end`;
       } else if (isIOS) {
-        window.location.href = selectedOffer; // iOS does not support force external browser reliably
+        window.location.href = selectedOffer;
       } else {
-        window.open(selectedOffer, "_blank");
+        window.location.href = telegramFallback;
       }
     };
 
